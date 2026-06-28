@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 1</title>
+</head>
+<body>
+    <h2>Завдання 1</h2>
+    <div id="markerOutput"></div>
+
+    <script>
+        class Button {
+            constructor(width, height, text) {
+                this.width = width;
+                this.height = height;
+                this.text = text;
+            }
+
+            showBtn() {
+                document.write("<button style='width:" + this.width + "px; height:" + this.height + "px;'>" + this.text + "</button>");
+            }
+        }
+
+        class BootstrapButton extends Button {
+            constructor(width, height, text, color) {
+                super(width, height, text);
+                this.color = color;
+            }
+
+            showBtn() {
+                document.write("<button style='width:" + this.width + "px; height:" + this.height + "px; background-color:" + this.color + "; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; margin-left: 10px;'>" + this.text + "</button>");
+            }
+        }
+
+        let simpleBtn = new Button(100, 40, "Звичайна");
+        simpleBtn.showBtn();
+
+        let bootBtn = new BootstrapButton(140, 40, "Bootstrap Успіх", "green");
+        bootBtn.showBtn();
+        
+        let bootBtn2 = new BootstrapButton(120, 40, "Bootstrap Інфо", "blue");
+        bootBtn2.showBtn();
+    </script>
+</body>
+</html>
