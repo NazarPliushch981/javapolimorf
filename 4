@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 3</title>
+</head>
+<body>
+    <h2>Завдання 3</h2>
+    <div id="arrayOutput"></div>
+
+    <script>
+        class ExtentedArray extends Array {
+            getString(separator) {
+                return this.join(separator);
+            }
+
+            getHtml(tagName) {
+                let result = "";
+                for (let i = 0; i < this.length; i++) {
+                    result += "<" + tagName + ">" + this[i] + "</" + tagName + ">";
+                }
+                if (tagName === "li") {
+                    result = "<ul>" + result + "</ul>";
+                }
+                return result;
+            }
+        }
+
+        let myArr = new ExtentedArray();
+        myArr.push("Яблуко");
+        myArr.push("Банан");
+        myArr.push("Груша");
+        myArr.push("Апельсин");
+
+        let box = document.getElementById("arrayOutput");
+
+        box.innerHTML += "<h3>Тест getString(' - '):</h3>";
+        box.innerHTML += "<p>" + myArr.getString(" - ") + "</p>";
+
+        box.innerHTML += "<h3>Тест getHtml('p'):</h3>";
+        box.innerHTML += myArr.getHtml("p");
+
+        box.innerHTML += "<h3>Тест getHtml('li'):</h3>";
+        box.innerHTML += myArr.getHtml("li");
+    </script>
+</body>
+</html>
