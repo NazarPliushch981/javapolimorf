@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 2</title>
+</head>
+<body>
+    <h2>Завдання 2</h2>
+    <div id="shapesOutput"></div>
+
+    <script>
+        class Shape {
+            get name() {
+                return "Невідома фігура";
+            }
+            showInfo() {
+                return "Інформація про сторони відсутня";
+            }
+            getArea() {
+                return 0;
+            }
+            getPerimeter() {
+                return 0;
+            }
+        }
+
+        class Square extends Shape {
+            constructor(side) {
+                super();
+                this.side = side;
+            }
+            get name() { return "Квадрат"; }
+            showInfo() { return "Сторона: " + this.side; }
+            getArea() { return this.side * this.side; }
+            getPerimeter() { return this.side * 4; }
+        }
+
+        class Rectangle extends Shape {
+            constructor(a, b) {
+                super();
+                this.a = a;
+                this.b = b;
+            }
+            get name() { return "Прямокутник"; }
+            showInfo() { return "Сторони: a = " + this.a + ", b = " + this.b; }
+            getArea() { return this.a * this.b; }
+            getPerimeter() { return 2 * (this.a + this.b); }
+        }
+
+        class Triangle extends Shape {
+            constructor(a, b, c) {
+                super();
+                this.a = a;
+                this.b = b;
+                this.c = c;
+            }
+            get name() { return "Трикутник"; }
+            showInfo() { return "Сторони: a = " + this.a + ", b = " + this.b + ", c = " + this.c; }
+            getPerimeter() { return this.a + this.b + this.c; }
+            getArea() {
+                let p = this.getPerimeter() / 2;
+                return Math.sqrt(p * (p - this.a) * (p - this.b) * (p - this.c));
+            }
+        }
+
+        let figures = [
+            new Square(5),
+            new Rectangle(4, 6),
+            new Triangle(3, 4, 5)
+        ];
+
+        let output = document.getElementById("shapesOutput");
+        for (let i = 0; i < figures.length; i++) {
+            let f = figures[i];
+            output.innerHTML += "<h3>" + f.name + "</h3>";
+            output.innerHTML += "<p>" + f.showInfo() + "</p>";
+            output.innerHTML += "<p><b>Площа:</b> " + f.getArea().toFixed(2) + "</p>";
+            output.innerHTML += "<p><b>Периметр:</b> " + f.getPerimeter() + "</p>";
+            output.innerHTML += "<hr>";
+        }
+    </script>
+</body>
+</html>
